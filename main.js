@@ -9,6 +9,8 @@ const input = require('readline-sync');
 // 3. Create a matching array of who added each item
 
 // SKILL (Building Arrays): creating three matching arrays with square brackets
+// This is important because each index holds one item's full data (its name, its quantity, 
+// the name of the person in the household who added it) across all the three arrays.
 // SKILL (Values, Data Types, and Operations): names of items and users are strings while the items' quantities are numbers
 let items = ["Eggs", "Avocado oil", "Tomato sauce", "Toilet paper", "Paper towel", "Detergent", "Salt", "Sugar"];
 let quantities = [12, 1, 1, 4, 2, 1, 1, 1];
@@ -28,6 +30,8 @@ console.log("");
 // 2. Print each item along with its quantity and who added it
 
 // SKILL (Working With Loops): a for loop is going through every index of the list
+// This is important because items.length allows the loop to adjust to the number of items on the list.
+// As the items are added or removed, items.length changes with those updates.
 console.log("Current grocery list:");
 for (let i = 0; i < items.length; i++) {
     console.log(`${items[i]} -> Quantity: ${quantities[i]} -> Added by: ${addedBy[i]}`);
@@ -44,15 +48,22 @@ let newItem = input.question("What item do you need? ");
 
 // SKILL (Stringing Characters Together): .trim() removes any extra spaces while
 // .charAt(0).toUpperCase() and .slice(1).toLowerCase() format the item's name
+// This is important because .includes() can then later find a match in such a way that the same
+// item is not added twice (this avoids any duplicates)
+// For example, "Eggs" versus "eggs" would count as different items without this formatting
 let trimmedItem = newItem.trim();
 let formattedItem = trimmedItem.charAt(0).toUpperCase() + trimmedItem.slice(1).toLowerCase();
 
-// SKILL (Control Structures and Logic): using if/else to decide whether or not to add the item
+// SKILL (Control Structures and Logic): using if/else to decide whether or not to add the item.
+// This is important because the item can only get added in the else path (which is when it is not already on the list).
+// Only one of the two paths runs.
 if (items.includes(formattedItem)) {
     console.log(`${formattedItem} is already on the list.`);
 } else {
     let newQuantity = input.questionInt("How many? ");
-    // SKILL (Using Arrays): using .push() to add to the end of each array
+    // SKILL (Using Arrays): using .push() to add to the end of each array.
+    // This is important because it ensures that the new item's name, quantity, and the user's name are in the same index.
+    // That way, the 3 arrays remain accurately lined up.
     items.push(formattedItem);
     quantities.push(newQuantity);
     addedBy.push(userName);
@@ -76,6 +87,8 @@ if (boughtAnswer.trim().toLowerCase() === "yes") {
 
     if (items.includes(formattedBought)) {
         // SKILL (Using Arrays): using .indexOf() to find the item, and .splice() to remove it
+        // This is important because .splice() gets called with the same index on all the three arrays.
+        // That way, they stay aligned since removing an item from only one would misalign the three arrays.
         let boughtIndex = items.indexOf(formattedBought);
         items.splice(boughtIndex, 1);
         quantities.splice(boughtIndex, 1);
