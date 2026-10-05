@@ -8,7 +8,7 @@ const input = require('readline-sync');
 // 2. Create a matching array of quantities
 // 3. Create a matching array of who added each item
 
-// SKILL (Building Arrays): creating three matching arrays square brackets
+// SKILL (Building Arrays): creating three matching arrays with square brackets
 // SKILL (Values, Data Types, and Operations): names of items and users are strings while the items' quantities are numbers
 let items = ["Eggs", "Avocado oil", "Tomato sauce", "Toilet paper", "Paper towel", "Detergent", "Salt", "Sugar"];
 let quantities = [12, 1, 1, 4, 2, 1, 1, 1];
@@ -20,7 +20,7 @@ let addedBy = ["Martin", "Ineza", "Ineza", "Martin", "Aura", "Martin", "Ineza", 
 // 3. Show a welcome message to the user
 
 let userName = input.question("What is your name? ");
-console.log(`Welcome message: Welcome to Groci, ${userName}!`);
+console.log(`Welcome to Groci, ${userName}!`);
 console.log("");
 
 // Pseudocode:
@@ -35,10 +35,10 @@ for (let i = 0; i < items.length; i++) {
 console.log("");
 
 // Pseudocode:
-// 1. Ask the user what item is needed and how many
+// 1. Ask the user what item is needed
 // 2. Ensure the item name matches the list's format
 // 3. If the item is already on the list, let the user know
-// 4. If the item is not on the list, add the item, its quantity, and the user's name
+// 4. If the item is not on the list, ask how many, then add the item, its quantity, and the user's name
 
 let newItem = input.question("What item do you need? ");
 
@@ -90,6 +90,9 @@ if (boughtAnswer.trim().toLowerCase() === "yes") {
 console.log("");
 
 // Showing the updated list
+// Pseudocode:
+// 1. Go through every item on the list by index
+// 2. Print each item along with its quantity and who added it
 console.log("Updated grocery list:");
 for (let i = 0; i < items.length; i++) {
     console.log(`${items[i]} -> Quantity: ${quantities[i]} -> Added by: ${addedBy[i]}`);
